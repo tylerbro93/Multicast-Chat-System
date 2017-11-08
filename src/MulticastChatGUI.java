@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,10 +20,8 @@ public class MulticastChatGUI {
     private JLabel messageLabel;
     private JLabel portLabel;
     private JLabel chatGroupIPLabel;
-    private updateSystemListener updater;
     private MulticastListener multicastListener;
     private MulticastSender multicastSender;
-    private Timer updateSystem;
     private int currentNumMessages;
     private ArrayList<String> messagesArray;
 
@@ -33,8 +30,8 @@ public class MulticastChatGUI {
         currentNumMessages = 0;
         Chatbox.setText("Welcome please hit join to begin chatting\n");
         messagesArray.add("Welcome please hit join to begin chatting\n");
-        updater = new updateSystemListener();
-        updateSystem = new Timer(1000, updater);
+        updateSystemListener updater = new updateSystemListener();
+        Timer updateSystem = new Timer(1000, updater);
         updateSystem.start();
         multicastListener = new MulticastListener(groupIP.getText(), Integer.parseInt(port.getText()),
                 HandleName.getText(), currentNumMessages, new ArrayList<String>());
@@ -65,7 +62,7 @@ public class MulticastChatGUI {
                     multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
                     multicastListener.join(1000);
                 } catch (Exception err) {
-                    System.out.println(err);
+                    err.printStackTrace();
                 }
                 JOINCHATButton.setEnabled(true);
                 SENDMESSAGEButton.setEnabled(false);
@@ -90,7 +87,7 @@ public class MulticastChatGUI {
                     try {
                         multicastListener.join(500);
                     } catch (InterruptedException err) {
-                        System.out.println(err);
+                        err.printStackTrace();
                     }
                     String mess = HandleName.getText() + " is exiting chat!";
                     multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
@@ -234,7 +231,7 @@ public class MulticastChatGUI {
 
                 }
             } catch (Exception err) {
-                System.out.println(err);
+                err.printStackTrace();
             }
         }
     }

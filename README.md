@@ -5,3 +5,6 @@ This program implements java's multicast in order to transmit messages between
 port 4001. Of course these parameters can be changed in the GUI based on the 
 user's desire. Also, the user may supply any Avatar/Chat Username to be used
 during the chat session.
+
+
+See GitHub: https://github.com/tylerbro93/Multicast-Chat-System

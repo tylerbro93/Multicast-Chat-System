@@ -5,10 +5,7 @@ import java.net.MulticastSocket;
 import java.util.ArrayList;
 
 public class MulticastListener extends Thread{
-    private MulticastSocket socket;
     private byte[] buffer = new byte[256];
-    private InetAddress group;
-    private DatagramPacket packet;
     private String avatar;
     private volatile String groupName;
     private volatile int portNum;
@@ -28,16 +25,16 @@ public class MulticastListener extends Thread{
     public void run() {
 
         try {
-            group = InetAddress.getByName(groupName);
-            socket = new MulticastSocket(portNum);
+            InetAddress group = InetAddress.getByName(groupName);
+            MulticastSocket socket = new MulticastSocket(portNum);
             socket.joinGroup(group);
             messages.add(avatar + " is connected to chat at  " + groupName);
             numOfMessages++;
-            while (shutdown == false) {
-                packet = new DatagramPacket(buffer, buffer.length);
+            while (!shutdown) {
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
                 String message = new String(packet.getData(), 0, packet.getLength());
-                if(message.contains(avatar) != true){
+                if(!message.contains(avatar)){
                     messages.add(message);
                     numOfMessages++;
                 }
@@ -49,10 +46,10 @@ public class MulticastListener extends Thread{
 
 
         catch (IOException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
-    
+
 
     public synchronized ArrayList<String> getMessages(){
         return messages;
