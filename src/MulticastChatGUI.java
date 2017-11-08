@@ -25,8 +25,6 @@ public class MulticastChatGUI {
     private MulticastListener multicastListener;
     private MulticastSender multicastSender;
     private Timer updateSystem;
-    private String groupName;
-    private int portNum;
     private int currentNumMessages;
     private ArrayList<String> messagesArray;
 
