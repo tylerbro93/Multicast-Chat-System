@@ -2,20 +2,19 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.rmi.UnknownHostException;
 import java.util.ArrayList;
 
 public class MulticastListener extends Thread{
-    public MulticastSocket socket;
-    public byte[] buffer = new byte[256];
-    public InetAddress group;
-    public DatagramPacket packet;
+    private MulticastSocket socket;
+    private byte[] buffer = new byte[256];
+    private InetAddress group;
+    private DatagramPacket packet;
     private String avatar;
-    volatile String groupName;
-    volatile int portNum;
-    volatile ArrayList<String> messages;
-    volatile Boolean shutdown;
-    volatile int numOfMessages;
+    private volatile String groupName;
+    private volatile int portNum;
+    private volatile ArrayList<String> messages;
+    private volatile Boolean shutdown;
+    private volatile int numOfMessages;
 
     public MulticastListener(String groupID, int portID, String avatar, int messNum, ArrayList<String> mess) {
         numOfMessages = messNum;
