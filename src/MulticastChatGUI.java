@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 class MulticastChatGUI {
@@ -30,7 +32,7 @@ class MulticastChatGUI {
         Chatbox.setText("Welcome please hit join to begin chatting\n");
         messagesArray.add("Welcome please hit join to begin chatting\n");
         updateSystemListener updater = new updateSystemListener();
-        Timer updateSystem = new Timer(1000, updater);
+        Timer updateSystem = new Timer(700, updater);
         updateSystem.start();
         multicastListener = new MulticastListener(groupIP.getText(), Integer.parseInt(port.getText()),
                 HandleName.getText(), currentNumMessages, new ArrayList<String>());
@@ -71,6 +73,7 @@ class MulticastChatGUI {
             String mess = HandleName.getText() + ": " + messageBox.getText();
             multicastListener.addMessage(mess);
             multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
+            messageBox.setText("");
         });
         EXITButton.addActionListener(e -> {
             if (LEAVECHATButton.isEnabled()) {
@@ -84,6 +87,14 @@ class MulticastChatGUI {
                 multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
             }
             System.exit(0);
+        });
+        messageBox.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == 10 && LEAVECHATButton.isEnabled()) {
+                    SENDMESSAGEButton.doClick();
+                }
+            }
         });
     }
 
