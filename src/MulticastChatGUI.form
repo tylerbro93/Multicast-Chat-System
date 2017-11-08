@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="20" bottom="80" right="20"/>
     <constraints>
-      <xy x="76" y="20" width="497" height="451"/>
+      <xy x="76" y="20" width="553" height="483"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -56,19 +56,26 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="53846" class="javax.swing.JTextArea" binding="Chatbox">
+              <scrollpane id="21b83">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="400" height="200"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="200"/>
                   </grid>
                 </constraints>
-                <properties>
-                  <background color="-3354929"/>
-                  <editable value="false"/>
-                  <foreground color="-12500671"/>
-                  <text value=""/>
-                </properties>
-              </component>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="53846" class="javax.swing.JTextArea" binding="Chatbox">
+                    <constraints/>
+                    <properties>
+                      <background color="-3354929"/>
+                      <editable value="false"/>
+                      <foreground color="-12500671"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
           <grid id="d262f" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="10">

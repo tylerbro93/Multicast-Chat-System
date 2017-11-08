@@ -147,12 +147,14 @@ public class MulticastChatGUI {
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.BOTH;
         panel2.add(panel4, gbc);
+        final JScrollPane scrollPane1 = new JScrollPane();
+        panel4.add(scrollPane1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(-1, 200), null, 0, false));
         Chatbox = new JTextArea();
         Chatbox.setBackground(new Color(-3354929));
         Chatbox.setEditable(false);
         Chatbox.setForeground(new Color(-12500671));
         Chatbox.setText("");
-        panel4.add(Chatbox, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(400, 200), null, 0, false));
+        scrollPane1.setViewportView(Chatbox);
         final JPanel panel5 = new JPanel();
         panel5.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, 10));
         gbc = new GridBagConstraints();
