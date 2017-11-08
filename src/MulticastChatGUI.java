@@ -37,8 +37,11 @@ class MulticastChatGUI {
         multicastSender = new MulticastSender();
         JOINCHATButton.addActionListener(e -> {
             JOINCHATButton.setEnabled(false);
-            multicastListener = new MulticastListener(groupIP.getText(), Integer.parseInt(port.getText()),
-                    HandleName.getText(), currentNumMessages, messagesArray);
+            String groupName = groupIP.getText();
+            String avatar = HandleName.getText();
+            int portNum = Integer.parseInt(port.getText());
+            multicastSender.sendMessage(avatar + " is connected to chat!", groupName, portNum);
+            multicastListener = new MulticastListener(groupName, portNum, avatar, currentNumMessages, messagesArray);
             multicastListener.start();
             currentNumMessages = multicastListener.amountOfMessages();
             LEAVECHATButton.setEnabled(true);
@@ -77,7 +80,7 @@ class MulticastChatGUI {
                 } catch (InterruptedException err) {
                     err.printStackTrace();
                 }
-                String mess = HandleName.getText() + " is exiting chat!";
+                String mess = HandleName.getText() + " has exited chat!";
                 multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
             }
             System.exit(0);
