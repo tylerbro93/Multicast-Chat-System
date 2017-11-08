@@ -21,7 +21,7 @@ public class MulticastListener extends Thread{
         this.avatar = avatar;
         this.groupName = groupID;
         this.portNum = portID;
-        shutdown = true;
+        shutdown = false;
         messages = mess;
     }
 
@@ -52,12 +52,7 @@ public class MulticastListener extends Thread{
             System.out.println(e);
         }
     }
-
-    public synchronized void updateData(String g, int p) {
-        this.portNum = p;
-        this.groupName = g;
-        shutdown = false;
-    }
+    
 
     public synchronized ArrayList<String> getMessages(){
         return messages;
