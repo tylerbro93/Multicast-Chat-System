@@ -2,7 +2,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class MulticastSender {
+class MulticastSender {
 
     public void sendMessage(String message, String groupName, int port) {
         byte[] buffer = message.getBytes();

@@ -4,12 +4,12 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.ArrayList;
 
-public class MulticastListener extends Thread{
-    private byte[] buffer = new byte[256];
+class MulticastListener extends Thread{
+    private final byte[] buffer = new byte[256];
     private String avatar;
-    private volatile String groupName;
-    private volatile int portNum;
-    private volatile ArrayList<String> messages;
+    private final String groupName;
+    private final int portNum;
+    private ArrayList<String> messages;
     private volatile Boolean shutdown;
     private volatile int numOfMessages;
 

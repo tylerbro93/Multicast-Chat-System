@@ -2,10 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
 import java.util.ArrayList;
 
-public class MulticastChatGUI {
+class MulticastChatGUI {
     private JPanel panel1;
     private JTextField HandleName;
     private JTextArea Chatbox;
@@ -36,64 +35,52 @@ public class MulticastChatGUI {
         multicastListener = new MulticastListener(groupIP.getText(), Integer.parseInt(port.getText()),
                 HandleName.getText(), currentNumMessages, new ArrayList<String>());
         multicastSender = new MulticastSender();
-        JOINCHATButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOINCHATButton.setEnabled(false);
-                multicastListener = new MulticastListener(groupIP.getText(), Integer.parseInt(port.getText()),
-                        HandleName.getText(), currentNumMessages, messagesArray);
-                multicastListener.start();
-                currentNumMessages = multicastListener.amountOfMessages();
-                LEAVECHATButton.setEnabled(true);
-                SENDMESSAGEButton.setEnabled(true);
-                groupIP.setEnabled(false);
-                port.setEnabled(false);
-                HandleName.setEnabled(false);
-            }
+        JOINCHATButton.addActionListener(e -> {
+            JOINCHATButton.setEnabled(false);
+            multicastListener = new MulticastListener(groupIP.getText(), Integer.parseInt(port.getText()),
+                    HandleName.getText(), currentNumMessages, messagesArray);
+            multicastListener.start();
+            currentNumMessages = multicastListener.amountOfMessages();
+            LEAVECHATButton.setEnabled(true);
+            SENDMESSAGEButton.setEnabled(true);
+            groupIP.setEnabled(false);
+            port.setEnabled(false);
+            HandleName.setEnabled(false);
         });
-        LEAVECHATButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LEAVECHATButton.setEnabled(false);
-                try {
-                    multicastListener.beginShutdownSequence();
-                    String mess = HandleName.getText() + " is disconnecting from chat!";
-                    multicastListener.addMessage(mess);
-                    multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
-                    multicastListener.join(1000);
-                } catch (Exception err) {
-                    err.printStackTrace();
-                }
-                JOINCHATButton.setEnabled(true);
-                SENDMESSAGEButton.setEnabled(false);
-                groupIP.setEnabled(true);
-                port.setEnabled(true);
-                HandleName.setEnabled(true);
-            }
-        });
-        SENDMESSAGEButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String mess = HandleName.getText() + ": " + messageBox.getText();
+        LEAVECHATButton.addActionListener(e -> {
+            LEAVECHATButton.setEnabled(false);
+            try {
+                multicastListener.beginShutdownSequence();
+                String mess = HandleName.getText() + " is disconnecting from chat!";
                 multicastListener.addMessage(mess);
                 multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
+                multicastListener.join(1000);
+            } catch (Exception err) {
+                err.printStackTrace();
             }
+            JOINCHATButton.setEnabled(true);
+            SENDMESSAGEButton.setEnabled(false);
+            groupIP.setEnabled(true);
+            port.setEnabled(true);
+            HandleName.setEnabled(true);
         });
-        EXITButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (LEAVECHATButton.isEnabled()) {
-                    multicastListener.beginShutdownSequence();
-                    try {
-                        multicastListener.join(500);
-                    } catch (InterruptedException err) {
-                        err.printStackTrace();
-                    }
-                    String mess = HandleName.getText() + " is exiting chat!";
-                    multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
+        SENDMESSAGEButton.addActionListener(e -> {
+            String mess = HandleName.getText() + ": " + messageBox.getText();
+            multicastListener.addMessage(mess);
+            multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
+        });
+        EXITButton.addActionListener(e -> {
+            if (LEAVECHATButton.isEnabled()) {
+                multicastListener.beginShutdownSequence();
+                try {
+                    multicastListener.join(500);
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
                 }
-                System.exit(0);
+                String mess = HandleName.getText() + " is exiting chat!";
+                multicastSender.sendMessage(mess, groupIP.getText(), Integer.parseInt(port.getText()));
             }
+            System.exit(0);
         });
     }
 
