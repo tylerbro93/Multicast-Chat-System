@@ -6,7 +6,7 @@ and port **4001**. Of course these parameters can be changed in the GUI based
 on the user's desire. Also, the user may supply any Avatar/Chat Username to be
 used during the chat session.
 
-#NOTES
+# NOTES
 * Please always change the name from Unknown User to the name you want to use
 
 * In order to start sending messages make sure your address and port is right.
@@ -15,5 +15,6 @@ used during the chat session.
   
 * Have fun!
 
-#INFO 
+# INFO 
+
 *See GitHub:* https://github.com/tylerbro93/
