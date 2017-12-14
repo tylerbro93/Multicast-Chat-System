@@ -16,6 +16,7 @@ defualt adrress for the program. Also, if mobile devices are used it is
 reccommended to use address **244.0.0.11**.
 
 # TUTORIAL
+## Setup
 When starting out your screen will display the defualt values for the port,
 IP, and avatar name. The defualt port settings are **4001** and the defualt
 IP is **244.0.0.1**. While for the avatar name just has the value of 
@@ -28,7 +29,7 @@ are the ones you want to use and correspond to what you want to do. If these
 addresses work for you then hit the button **Join Chat**.
 
 ![alt text](img/name.PNG "Enter your name")
-
+## Joining Chat
 Once you have hit the joined chat button you will be greeted with a notification
 if the operation was successful. The notification should display *avatar name 
 **is connected to chat at** address*
@@ -39,6 +40,17 @@ If another user joins the chat you will recieve a notification stating the avata
 has successfully connected to the chat and will recieve any messages posted in 
 the chat room.
 ![alt text](img/userjoined.PNG "User has connected to you")
+## Messages
+In order to send a message type in your message in the box next to the tab
+labeled *Message*. Once you have completed typing your message hit **ENTER**
+or click **SEND MESSAGE** to send the message to all users connected to the
+chat room.
+![alt text](img/sendmessages.PNG "send message to all members")
+
+All messages will show up in the message box located under the chat handler
+name. Each message will contain the id of the user who sent it and this will
+be visable on all users screens even those who sent the message.
+![alt text](img/messages.PNG "Messages")
 
 # NOTES
 * Please always change the name from Unknown User to the name you want to use
