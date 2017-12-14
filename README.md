@@ -15,6 +15,31 @@ reccommended to use **244.0.0.1** for the address. This address is also the
 defualt adrress for the program. Also, if mobile devices are used it is 
 reccommended to use address **244.0.0.11**.
 
+# TUTORIAL
+When starting out your screen will display the defualt values for the port,
+IP, and avatar name. The defualt port settings are **4001** and the defualt
+IP is **244.0.0.1**. While for the avatar name just has the value of 
+**Unknown User**.
+![alt text](img/startingview.PNG "Defualts")
+
+It is reccommended that the avatar name is replaced with a descriptive name
+that other users can recognize you by. Afterwards make sure your IP and port
+are the ones you want to use and correspond to what you want to do. If these
+addresses work for you then hit the button **Join Chat**.
+
+![alt text](img/name.PNG "Enter your name")
+
+Once you have hit the joined chat button you will be greeted with a notification
+if the operation was successful. The notification should display *avatar name 
+**is connected to chat at** address*
+
+![alt text](img/joinedchat.PNG "Join Message")
+
+If another user joins the chat you will recieve a notification stating the avatar
+has successfully connected to the chat and will recieve any messages posted in 
+the chat room.
+![alt text](img/userjoined.PNG "User has connected to you")
+
 # NOTES
 * Please always change the name from Unknown User to the name you want to use
 
