@@ -51,6 +51,23 @@ All messages will show up in the message box located under the chat handler
 name. Each message will contain the id of the user who sent it and this will
 be visable on all users screens even those who sent the message.
 ![alt text](img/messages.PNG "Messages")
+## Leaving Chat
+In order to leave chat you can click **LEAVE CHAT** and this will disconnect
+you from the multicast chat system. Once you have disconnected all remaining
+users on the network will get a message that you have left chat.
+![alt text](img/leavechat.PNG "Leaving Chat")
+
+If the user clicks **EXIT CHAT** it will close out of the the program and
+if the user was connected to chat before hitting the button then all users
+on the network will be notified that the user has exited out of the chat
+program.
+![alt text](img/exitchat.PNG "If user exits out of chat.")
+
+# Author
+* [tylerbro93](https://github.com/tylerbro93/)
+
+# License
+This project is created under the [GPL-3.0 License](./LICENSE)
 
 # NOTES
 * Please always change the name from Unknown User to the name you want to use
@@ -64,3 +81,4 @@ be visable on all users screens even those who sent the message.
 # INFO 
 
 *See GitHub:* https://github.com/tylerbro93/
+*See Website* https://www.tylersbrown.com/
